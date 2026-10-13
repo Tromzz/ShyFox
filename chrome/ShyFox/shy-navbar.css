@@ -13,7 +13,7 @@ Navigation bar on top of the window
 }
 
 /* if navbar is not hidden, this window is not floating popup and not in fullscreen video */
-#main-window:not(:is([titlepreface*="‌"], [titlepreface*="‍"]))[chromehidden=""]:not([inDOMFullscreen="true"]){
+#main-window:not(:is([titlepreface*="‌"], [titlepreface*="‍"])):not([chromehidden]):not([inDOMFullscreen="true"]){
   /* set top margin to navbar height */
   --top-margin: calc(var(--toolbar-item-hgt)) !important;
 }
@@ -240,10 +240,15 @@ Navigation bar on top of the window
     visibility: collapse;
   }
 
+  #urlbar-container {
+    position: relative !important;
+  }
+
   #urlbar-container::before {
     content: "";
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
     border-radius: var(--rounding);
     background-color: var(--toolbar-field-background-color);
   }
